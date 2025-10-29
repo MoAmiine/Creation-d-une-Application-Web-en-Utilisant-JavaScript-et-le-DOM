@@ -1,0 +1,121 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #181B39;
+    font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+button{
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+header{
+    background: white;
+    height: 70px;
+    padding: 20px;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    gap: 80px;
+}
+nav p{
+    font-size: 30px;
+}
+.Acceuil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    margin: 5rem;
+    border: solid white;
+    
+}
+.Acceuil h1{
+    text-align: center;
+    font-size: 6rem;
+}
+.Acceuil p{
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.Acceuil button{
+    width: 28rem;
+    height: 8rem;
+    border-radius: 50px;
+    font-family: "Krona One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+    box-shadow: 0 0 15px #000;
+    border: none;
+    cursor: pointer;
+}
+.question{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    margin: 3rem;
+}
+.question h1{
+    font-size: 80px;
+}
+.question h2{
+    font-size: 40px;
+    margin-bottom: 3rem;
+}
+.question div{
+    background: white;
+    color: #000;
+    width: 30rem;
+    height: 4rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 50px;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+.suivant{
+    width: 10rem;
+    height: 3rem;
+    border-radius: 50px;
+    
+    background: #00bfff;
+    border: none;
+    cursor: pointer;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+.precedent{
+    width: 10rem;
+    height: 3rem;
+    border-radius: 50px;
+    background: #00bfff;
+    border: none;
+    cursor: pointer;
+    justify-self: flex-start;
+}
+.button{
+    display: flex;
+    
+    
+}
+
+
+
