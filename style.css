@@ -71,6 +71,7 @@ nav p{
 }
 .question h1{
     font-size: 80px;
+  
 }
 .question h2{
     font-size: 40px;
@@ -112,9 +113,9 @@ a{
     justify-self: flex-start;
 }
 .button{
-    display: flex;
-    
-    
+   display: flex;
+   justify-content: space-between;
+    gap: 100px;
 }
 
 
