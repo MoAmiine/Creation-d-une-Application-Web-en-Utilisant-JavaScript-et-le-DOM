@@ -1,13 +1,14 @@
-if(window.location.pathname.endsWith = ("index.html")){
-    function start(){
+if(window.location.pathname.endsWith("index.html")){
+
     const commencer = document.getElementById("commencer");
     commencer.addEventListener('click' , () => {
-    window.location.href = 'question1.html'; 
+    window.location.href = 'question.html'; 
     })
+
 }
     
       
-}       
+      
     
     else{
         console.log('hello')
@@ -38,7 +39,7 @@ const answers = [
         "À simuler une application en mode avion durant les trajets dans un bus"
     ] ,  
     [
-        "L'élément dont l'id est intro et qui est contenu dans un élément < strong > ",
+        "L'élément dont l'id est intro et qui est contenu dans un élément < strong >",
         "L'élément < strong > dont l'id est intro",
         "Tous les éléments < strong > contenus dans un élément dont l'id est intro",
         "Tous les éléments < strong > et les éléments dont l'id est intro"
@@ -57,9 +58,16 @@ const answers = [
         "Un signe impossible à distinguer"
     ]  
 ];
+const correctanswers = [
+    "Cascading Style Sheets",
+    "À ajouter du style aux documents web",
+    answers[2][0],
+    "Dans un fichier externe utilisable pour plusieurs pages",
+    answers[4][0]
+];
 
 let counter = 0;
-
+let Answered;
   const titlee = document.getElementById("question-title");
   const questionn = document.getElementById("question-text");
   const ans1 = document.getElementById("answer1");
@@ -72,29 +80,59 @@ let counter = 0;
 const next = document.getElementById("suivant");
 const prev = document.getElementById("precedent");
 
+if (window.location.pathname.endsWith('question.html')){
 next.innerText = "Suivant";
 prev.innerText = "Precedent";
 
     function renderquestion(){
+    ans1.style.backgroundColor = '#FFFFFF';
+    ans2.style.backgroundColor = '#FFFFFF';
+    ans3.style.backgroundColor = '#FFFFFF';
+    ans4.style.backgroundColor = '#FFFFFF';
     titlee.innerText = titles[counter];
     questionn.innerText = questions[counter];
     ans1.innerText = answers[counter][0];
     ans2.innerText = answers[counter][1];
     ans3.innerText = answers[counter][2];
     ans4.innerText = answers[counter][3]; 
+    prev.style.display = counter === 0 ? 'none' : 'block';
+    next.innerText = counter === titles.length - 1 ? 'Terminer' : 'Suivant';
     }
     renderquestion();
-
   next.addEventListener('click', () => {
-    if (counter < titles.length) {
-        counter ++;
-        renderquestion();
-    }
+        if (Answered) {
+            counter++;
+            Answered = false;
+            renderquestion();
+            next.style.opacity = '0.5';
+            next.style.cursor = 'not-allowed';
+        }
   });
   prev.addEventListener('click', () => {
-    if (counter > 0) {
         counter--;
         renderquestion();
-    }
+    
   })
+}
 
+ 
+    next.style.opacity = '0.5';
+    next.style.cursor = 'not-allowed';
+
+    for(let i = 1; i <= 4; i++){
+        const answerBtn = document.getElementById(`answer${i}`);
+        answerBtn.addEventListener('click', () => {
+            if(answerBtn.innerText === correctanswers[counter]) {
+                answerBtn.style.backgroundColor = 'green';
+            } else {
+                answerBtn.style.backgroundColor = 'red';
+                [ans1, ans2, ans3, ans4].find(ans => 
+                    ans.innerText === correctanswers[counter]
+                ).style.backgroundColor = 'green';
+            }
+            
+            Answered = true;
+            next.style.opacity = '1';
+            next.style.cursor = 'pointer';
+        });
+    }

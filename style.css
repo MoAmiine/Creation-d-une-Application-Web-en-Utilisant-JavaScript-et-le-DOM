@@ -39,7 +39,6 @@ nav p{
     flex-direction: column;
     color: white;
     margin: 5rem;
-    border: solid white;
     
 }
 .Acceuil h1{
@@ -61,6 +60,11 @@ nav p{
     box-shadow: 0 0 15px #000;
     border: none;
     cursor: pointer;
+    transition: 0.3s ease;
+}
+.Acceuil button:hover{
+    transform: scale(1.07);
+
 }
 .question{
     display: flex;
@@ -76,6 +80,7 @@ nav p{
 .question h2{
     font-size: 40px;
     margin-bottom: 3rem;
+    text-align: center;
 }
 .question div{
     background: white;
@@ -89,15 +94,35 @@ nav p{
     border-radius: 50px;
     margin-bottom: 2rem;
     cursor: pointer;
+    transition: 0.3s ease;
+
+   
+}
+
+.question div:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+
+}
+
+.question div.selected {
+    background: #00bfff;
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
 }
 .suivant{
     width: 10rem;
     height: 3rem;
     border-radius: 50px;
-    
     background: #00bfff;
     border: none;
     cursor: pointer;
+}
+.suivant:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px #00bfff;
+    transition: 0.3s ease;
 }
 a{
     color: black;
@@ -111,6 +136,12 @@ a{
     border: none;
     cursor: pointer;
     justify-self: flex-start;
+    transition: 0.3s ease;
+
+}
+.precedent:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px #00bfff;
 }
 .button{
    display: flex;
