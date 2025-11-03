@@ -68,6 +68,8 @@ const correctanswers = [
 
 let counter = 0;
 let Answered;
+let score = 0;
+let userAnswers = new Array(5)
   const titlee = document.getElementById("question-title");
   const questionn = document.getElementById("question-text");
   const ans1 = document.getElementById("answer1");
@@ -101,11 +103,15 @@ prev.innerText = "Precedent";
     renderquestion();
   next.addEventListener('click', () => {
         if (Answered) {
-            counter++;
-            Answered = false;
-            renderquestion();
-            next.style.opacity = '0.5';
-            next.style.cursor = 'not-allowed';
+            if (counter === titles.length - 1) {
+                showFinalScore();
+            } else {
+                counter++;
+                Answered = false;
+                renderquestion();
+                next.style.opacity = '0.5';
+                next.style.cursor = 'not-allowed';
+            }
         }
   });
   prev.addEventListener('click', () => {
@@ -115,24 +121,49 @@ prev.innerText = "Precedent";
   })
 }
 
- 
     next.style.opacity = '0.5';
     next.style.cursor = 'not-allowed';
+
+    function showFinalScore() {
+        titlee.style.display = 'none';
+        questionn.style.display = 'none';
+        [ans1, ans2, ans3, ans4].forEach(ans => ans.style.display = 'none');
+        next.style.display = 'none';
+        prev.style.display = 'none';
+
+        const scorediv = document.createElement('div');
+        scorediv.style.textAlign = 'center';
+        scorediv.style.lineHeight = '5rem'
+        scorediv.style.alignItems = 'center'
+        scorediv.style.color = 'white';
+        scorediv.style.fontSize = '2rem';
+        scorediv.innerHTML = `
+            <h1>Quiz Terminé!</h1>
+            <p>Votre score: ${score}/${titles.length}</p>
+            <p>Réponses correctes: ${score}</p>
+            <p>Réponses incorrectes: ${titles.length - score}</p>
+        `;
+        document.querySelector('.question').appendChild(scorediv);
+    }
 
     for(let i = 1; i <= 4; i++){
         const answerBtn = document.getElementById(`answer${i}`);
         answerBtn.addEventListener('click', () => {
-            if(answerBtn.innerText === correctanswers[counter]) {
-                answerBtn.style.backgroundColor = 'green';
-            } else {
-                answerBtn.style.backgroundColor = 'red';
-                [ans1, ans2, ans3, ans4].find(ans => 
-                    ans.innerText === correctanswers[counter]
-                ).style.backgroundColor = 'green';
+            if(!Answered) { 
+                if(answerBtn.innerText === correctanswers[counter]) {
+                    answerBtn.style.backgroundColor = 'green';
+                    score++; 
+                } else {
+                    answerBtn.style.backgroundColor = 'red';
+                    [ans1, ans2, ans3, ans4].find(ans => 
+                        ans.innerText === correctanswers[counter]
+                    ).style.backgroundColor = 'green';
+                }
+                
+                userAnswers[counter] = answerBtn.innerText;
+                Answered = true;
+                next.style.opacity = '1';
+                next.style.cursor = 'pointer';
             }
-            
-            Answered = true;
-            next.style.opacity = '1';
-            next.style.cursor = 'pointer';
         });
     }

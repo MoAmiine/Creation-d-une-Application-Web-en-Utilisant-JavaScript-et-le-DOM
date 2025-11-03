@@ -82,7 +82,7 @@ nav p{
     margin-bottom: 3rem;
     text-align: center;
 }
-.question div{
+#answer1, #answer2, #answer3, #answer4{
     background: white;
     color: #000;
     width: 30rem;
